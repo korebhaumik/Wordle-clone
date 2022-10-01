@@ -52,6 +52,11 @@ export const allAttemptReducer = (state = [], actions) => {
       }
       return state;
     }
+    case "CLEAR_ALL_ATTEMPTS": {
+      // state = [["h", "e", "l", "l", "o"]];
+      state = [];
+      return state;
+    }
     default:
       return state;
   }
@@ -67,6 +72,9 @@ export const winReducer = (state = false, actions) => {
         return !state;
       }
       return state;
+    }
+    case "RESET_WIN": {
+      return !state;
     }
     default:
       return state;
