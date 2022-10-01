@@ -1,8 +1,10 @@
 import React from "react";
 import darkMode from "../../logic/actions/navActions";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function Dropdown() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.darkMode);
   const path = theme
@@ -50,6 +52,9 @@ export default function Dropdown() {
         viewBox="0 0 24 24"
         stroke="currentColor"
         strokeWidth="2"
+        onClick={() => {
+          navigate("/rules");
+        }}
       >
         <path
           strokeLinecap="round"

@@ -62,7 +62,7 @@ export const winReducer = (state = false, actions) => {
     case "VALIDATE_WIN": {
       let ans = actions.payload.ans.join("");
       let wrd = actions.payload.value.join("");
-      wrd = wrd.toLowerCase();
+      // wrd = wrd.toLowerCase();
       if (wrd == ans) {
         return !state;
       }

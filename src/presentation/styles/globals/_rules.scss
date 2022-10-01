@@ -1,0 +1,24 @@
+.rules-con {
+  box-sizing: border-box;
+  width: 366px;
+  height: 375px;
+  position: relative;
+  padding: 20px 25px;
+
+  .rules-scroll {
+    height: 310px;
+    // background-color: tomato;
+    overflow: scroll;
+  }
+  h1 {
+    color: rgba(68, 129, 219, 1);
+    margin: 0px;
+  }
+  // background-color: yellowgreen;
+  .cross {
+    height: 30px;
+    position: absolute;
+    top: 6%;
+    right: 6%;
+  }
+}

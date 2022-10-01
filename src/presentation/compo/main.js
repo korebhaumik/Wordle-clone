@@ -1,14 +1,22 @@
-import { useState, React } from "react";
+import { useState, useEffect, React } from "react";
 import { useSelector } from "react-redux";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import Rules from "./rules";
+import Game from "./game";
+import WinScreen from "./winScreen";
 
 function Main({ ans }) {
-  const currentAttempt = useSelector((state) => state.currentAttempt);
   const darkMode = useSelector((state) => state.darkMode);
-  const attempts = useSelector((state) => state.attempts);
-  const displayArr = [...attempts, [], [], [], [], []];
+  const win = useSelector((state) => state.win);
+  const navigate = useNavigate();
 
-  const mode = darkMode ? "d" : "l";
-  const headchange = () => {
+  useEffect(() => {
+    if (win) {
+      navigate("/winScreen");
+    }
+  }, [win]);
+
+  const themechange = () => {
     if (darkMode) {
       return { backgroundColor: "#1E1E1E", color: "#F2F6FC" };
     } else {
@@ -16,80 +24,16 @@ function Main({ ans }) {
     }
   };
 
-  const blipStyle = (wrd, pos) => {
-    if (wrd) {
-      // console.log(wrd[pos]);
-
-      if (ans[pos] === wrd[pos]) {
-        return {
-          backgroundColor: "rgb(0,0,0,0)",
-          outline: `solid ${4}px`,
-          outlineColor: "#6EEC79",
-        };
-      } else if (ans.includes(wrd[pos])) {
-        return {
-          backgroundColor: "rgb(0,0,0,0)",
-          outline: `solid ${4}px`,
-          outlineColor: "#ECC66E",
-        };
-      }
-    }
-  };
-
-  const newStyle = (index) => {
-    if (currentAttempt.length == index) {
-      return {
-        // backgroundColor: "#F2F6FC",
-        // color: "black",
-        outlineColor: "#F2F6FC",
-        outline: `solid ${3}px`,
-      };
-    }
-  };
-
-  const show = displayArr.map((wrd, index) => {
-    return (
-      <div className="blop" key={index}>
-        <div className={`blip-${mode}`} id={0} style={blipStyle(wrd, 0)}>
-          {wrd[0]}
-        </div>
-        <div className={`blip-${mode}`} id={1} style={blipStyle(wrd, 1)}>
-          {wrd[1]}
-        </div>
-        <div className={`blip-${mode}`} id={2} style={blipStyle(wrd, 2)}>
-          {wrd[2]}
-        </div>
-        <div className={`blip-${mode}`} id={3} style={blipStyle(wrd, 3)}>
-          {wrd[3]}
-        </div>
-        <div className={`blip-${mode}`} id={4} style={blipStyle(wrd, 4)}>
-          {wrd[4]}
-        </div>
-      </div>
-    );
-  });
-
   return (
     <>
-      <div className="main-div" style={headchange()}>
-        <div className="block">
-          <div className={`blip-${mode}`} style={newStyle(0)}>
-            {currentAttempt[0]}
-          </div>
-          <div className={`blip-${mode}`} style={newStyle(1)}>
-            {currentAttempt[1]}
-          </div>
-          <div className={`blip-${mode}`} style={newStyle(2)}>
-            {currentAttempt[2]}
-          </div>
-          <div className={`blip-${mode}`} style={newStyle(3)}>
-            {currentAttempt[3]}
-          </div>
-          <div className={`blip-${mode}`} style={newStyle(4)}>
-            {currentAttempt[4]}
-          </div>
-        </div>
-        <div className="scroll">{show}</div>
+      <div className="main-div" style={themechange()}>
+        <Routes>
+          <Route exact path="/" element={<Game ans={ans} />} />
+          {win && (
+            <Route exact path="/winScreen" element={<WinScreen ans={ans} />} />
+          )}
+          <Route exact path="/rules" element={<Rules />} />
+        </Routes>
       </div>
     </>
   );

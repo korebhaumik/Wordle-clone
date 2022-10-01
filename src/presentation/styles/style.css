@@ -38,19 +38,6 @@ body {
   border-radius: 5px;
 }
 
-.main-div {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 50px;
-  background-color: white;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: auto;
-  border-radius: 15px;
-}
-
 .block {
   display: flex;
   justify-content: center;
@@ -137,6 +124,21 @@ body {
   position: relative;
   width: 900px;
   margin: auto;
+}
+
+.main-div {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  border-radius: 15px;
+}
+
+.game {
+  margin: 50px;
 }
 
 .blop {
@@ -299,6 +301,28 @@ body {
     display: block;
   }
 }
+.rules-con {
+  box-sizing: border-box;
+  width: 366px;
+  height: 375px;
+  position: relative;
+  padding: 20px 25px;
+}
+.rules-con .rules-scroll {
+  height: 310px;
+  overflow: scroll;
+}
+.rules-con h1 {
+  color: rgb(68, 129, 219);
+  margin: 0px;
+}
+.rules-con .cross {
+  height: 30px;
+  position: absolute;
+  top: 6%;
+  right: 6%;
+}
+
 body {
   box-sizing: border-box;
 }/*# sourceMappingURL=style.css.map */

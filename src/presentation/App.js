@@ -4,6 +4,7 @@ import Main from "./compo/main";
 import Nav from "./compo/nav";
 import setAns from "../service/actions/ansActions";
 import { useDispatch, useSelector } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import "./styles/style.css";
 
@@ -26,13 +27,13 @@ function App() {
   changebackground();
 
   return (
-    <>
+    <Router>
       <div className="app">
         <Nav ans={ans} />
         <Main ans={ans} />
         <Keyboard ans={ans} />
       </div>
-    </>
+    </Router>
   );
 }
 

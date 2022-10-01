@@ -2,11 +2,13 @@ import { React, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import darkMode from "../../logic/actions/navActions";
 import Dropdown from "./dropdown.js";
+import { useNavigate } from "react-router-dom";
 
 function Nav({ ans }) {
   const dispatch = useDispatch();
   const theme = useSelector((state) => state.darkMode);
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const path = theme
     ? "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
@@ -81,6 +83,9 @@ function Nav({ ans }) {
             viewBox="0 0 24 24"
             stroke="currentColor"
             strokeWidth="2"
+            onClick={() => {
+              navigate("/rules");
+            }}
           >
             <path
               strokeLinecap="round"
