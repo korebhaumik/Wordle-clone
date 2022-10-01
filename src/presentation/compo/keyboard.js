@@ -18,6 +18,11 @@ function Keyboard({ ans }) {
     dispatch(currentAttempt(event.currentTarget.id));
   };
 
+  // const alphaKey = (event) => {
+  //   dispatch(currentAttempt(event.key));
+  //   console.log(event.key);
+  // };
+
   const alplaDelete = () => {
     dispatch(backspaceAttempt());
   };
